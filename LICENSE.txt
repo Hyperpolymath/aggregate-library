@@ -1,0 +1,104 @@
+aggregate-library (aLib) - Common Library Specification
+Copyright (c) 2025 Hyperpolymath
+
+This work is dual-licensed under:
+1. MIT License (for permissive use)
+2. Palimpsest License v0.8 (for ethical constraints)
+
+You may choose either license for your use case.
+
+================================================================================
+MIT License
+================================================================================
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+Palimpsest License v0.8
+================================================================================
+
+The Palimpsest License is designed to ensure ethical use of software while
+preserving open source freedoms.
+
+PERMISSIONS:
+- Use: You may use this software for any lawful purpose
+- Study: You may examine and analyze the source code
+- Modify: You may create derivative works
+- Distribute: You may share copies and modifications
+- Commercial Use: You may use this software commercially
+
+ETHICAL CONSTRAINTS:
+1. Do No Harm: You may not use this software to cause harm to individuals,
+   communities, or the environment.
+
+2. Respect Autonomy: You may not use this software to manipulate, surveil,
+   or control people without informed consent.
+
+3. Promote Justice: You may not use this software in ways that perpetuate
+   discrimination, inequality, or injustice.
+
+4. Preserve Privacy: You may not use this software to violate privacy rights
+   or collect personal data without explicit, informed consent.
+
+5. Support Sustainability: You may not use this software in ways that cause
+   significant environmental harm.
+
+6. Foster Community: You may not use this software to undermine community
+   well-being or social cohesion.
+
+ATTRIBUTION REQUIREMENTS:
+- Maintain this license notice in all copies or substantial portions
+- Clearly indicate modifications made to the original work
+- Provide attribution to original authors in derivative works
+
+TRANSPARENCY:
+- Modified versions must be clearly marked as such
+- Source code must remain available for modified distributed versions
+
+ENFORCEMENT:
+- License violations may result in termination of granted permissions
+- Community-based dispute resolution is encouraged before legal action
+- Good faith interpretation of ethical constraints is expected
+
+WARRANTY DISCLAIMER:
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+License Selection Guidance
+================================================================================
+
+Choose MIT if:
+- You want maximum permissiveness
+- You are unconcerned with use-case restrictions
+- You prioritize simplicity and legal clarity
+
+Choose Palimpsest v0.8 if:
+- You want ethical constraints on use
+- You care about social and environmental impact
+- You want to prevent harmful applications
+- You support values-aligned software development
+
+For questions about license interpretation or compliance, please contact
+the project maintainers or file an issue in the project repository.
