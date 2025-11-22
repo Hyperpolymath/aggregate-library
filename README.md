@@ -2,6 +2,21 @@
 
 **A Common Library specification shared across radically different programming languages**
 
+[![RSR Compliance](https://img.shields.io/badge/RSR-Bronze+-blue.svg)](RSR_COMPLIANCE.md)
+[![License](https://img.shields.io/badge/License-MIT%20%2F%20Palimpsest%20v0.8-green.svg)](LICENSE.txt)
+[![TPCF](https://img.shields.io/badge/TPCF-Perimeter%203-orange.svg)](CONTRIBUTING.md)
+[![Offline-First](https://img.shields.io/badge/Offline-First-brightgreen.svg)](SPEC_FORMAT.md)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
+
+## Quick Links
+
+- 📖 [Specification Format](SPEC_FORMAT.md)
+- 🤝 [Contributing Guide](CONTRIBUTING.md)
+- 🛡️ [Security Policy](SECURITY.md)
+- ⚖️ [Code of Conduct](CODE_OF_CONDUCT.md)
+- 📊 [RSR Compliance Report](RSR_COMPLIANCE.md)
+- 📝 [Changelog](CHANGELOG.md)
+
 ## Overview
 
 The aggregate-library (aLib) project defines a minimal **Common Library** that represents the intersection of functionality across seven fundamentally different programming languages. Each language will have its own **Aggregate Library** = **Common Library** + language-specific **Standard Library**.
@@ -131,8 +146,20 @@ See [SPEC_FORMAT.md](SPEC_FORMAT.md) for complete details.
 ```
 aggregate-library/
 ├── README.md                 # This file
+├── LICENSE.txt               # Dual MIT / Palimpsest v0.8
 ├── CLAUDE.md                 # AI assistant guidelines
 ├── SPEC_FORMAT.md            # Specification format documentation
+├── RSR_COMPLIANCE.md         # RSR compliance report
+├── SECURITY.md               # Security policies
+├── CONTRIBUTING.md           # Contribution guidelines
+├── CODE_OF_CONDUCT.md        # Community standards
+├── MAINTAINERS.md            # Project governance
+├── CHANGELOG.md              # Version history
+├── justfile                  # Build automation (30+ recipes)
+├── .well-known/              # Standard metadata
+│   ├── security.txt          # RFC 9116 compliant
+│   ├── ai.txt                # AI training policies
+│   └── humans.txt            # Contributor attribution
 └── specs/                    # Operation specifications
     ├── arithmetic/
     │   ├── add.md
@@ -230,15 +257,91 @@ Each language implements the same operation differently, but all satisfy the spe
 - **iSOS**: The broader framework (documentation forthcoming)
 - Individual language repositories (links TBD)
 
+## RSR Compliance
+
+This project follows the **Rhodium Standard Repository (RSR)** framework and has achieved **Bronze+ compliance level**.
+
+### Compliance Highlights
+
+- ✅ **Documentation**: Complete (9 files)
+- ✅ **Security**: Comprehensive policies (SECURITY.md, RFC 9116)
+- ✅ **Community**: TPCF Perimeter 3 (open contribution)
+- ✅ **Licensing**: Dual MIT / Palimpsest v0.8
+- ✅ **Offline-First**: Zero network dependencies
+- ✅ **Type Safety**: All operations fully typed
+- ✅ **Infrastructure**: justfile with 30+ validation recipes
+
+Run `just rsr` to verify compliance or see [RSR_COMPLIANCE.md](RSR_COMPLIANCE.md) for the full report.
+
+### Quick Start
+
+```bash
+# Validate all specifications
+just validate
+
+# Run all tests
+just test
+
+# Check documentation
+just docs
+
+# Full compliance check
+just check
+
+# List all operations
+just list
+```
+
 ## Contributing
 
-This specification is part of ongoing research into cross-paradigm language design. Feedback and contributions are welcome.
+We welcome contributions! This specification is part of ongoing research into cross-paradigm language design.
+
+**Before contributing:**
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
+2. Review [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards
+3. Check [SPEC_FORMAT.md](SPEC_FORMAT.md) for specification format
+
+**Ways to contribute:**
+- Improve specification clarity
+- Add test cases
+- Enhance documentation
+- Report issues or ambiguities
+- Propose new operations (rare - must exist in all 7 languages)
+
+**Community:**
+- 🏛️ Governance: [MAINTAINERS.md](MAINTAINERS.md)
+- 🤝 TPCF Perimeter 3: Open contribution
+- 💚 Emotional Safety: Prioritized in our community
+- 🔒 Security: [SECURITY.md](SECURITY.md)
 
 ## License
 
-TBD
+This project is dual-licensed under:
+
+### MIT License
+Permissive use for maximum compatibility and adoption.
+
+### Palimpsest License v0.8
+Ethical constraints ensuring responsible use:
+- Do no harm
+- Respect autonomy
+- Promote justice
+- Preserve privacy
+- Support sustainability
+- Foster community
+
+**You may choose either license** for your use case. See [LICENSE.txt](LICENSE.txt) for full terms and selection guidance.
+
+## Acknowledgments
+
+- The seven language communities for inspiration
+- RSR framework authors for compliance standards
+- Open source community for collaborative spirit
+- All contributors (see `.well-known/humans.txt`)
 
 ---
 
 **Version**: 0.1.0 (Initial specification)
 **Last Updated**: 2025-11-22
+**RSR Compliance**: Bronze+ (Specification Repository)
+**TPCF Perimeter**: 3 (Community Sandbox)

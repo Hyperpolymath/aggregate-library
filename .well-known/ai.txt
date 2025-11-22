@@ -1,0 +1,143 @@
+# AI Training and Usage Policy
+# aggregate-library (aLib) - Common Library Specification
+
+## Permissions
+
+# ✅ ALLOWED:
+# - Training AI models on this specification content
+# - Using AI to understand and implement specifications
+# - AI-assisted code generation based on these specifications
+# - Educational and research use by AI systems
+# - Creating documentation and examples with AI assistance
+# - Analyzing specifications for compliance and correctness
+
+## Conditions
+
+# When using this content for AI training or generation:
+#
+# 1. ATTRIBUTION: Clearly attribute the source
+#    - Project: aggregate-library (aLib)
+#    - URL: https://github.com/Hyperpolymath/aggregate-library
+#    - License: Dual MIT / Palimpsest v0.8
+#
+# 2. LICENSE COMPLIANCE: Respect the dual license
+#    - MIT License: Permissive use allowed
+#    - Palimpsest v0.8: Ethical use constraints apply
+#      * Do no harm
+#      * Respect autonomy
+#      * Promote justice
+#      * Preserve privacy
+#      * Support sustainability
+#      * Foster community
+#
+# 3. ACCURACY: Preserve specification semantics
+#    - Don't alter behavioral semantics in training data
+#    - Maintain test case integrity
+#    - Preserve specification intent
+#
+# 4. CONTEXT: Maintain context about specifications
+#    - These are language-agnostic specifications
+#    - Not implementation code
+#    - Part of cross-language Common Library initiative
+#
+# 5. TRANSPARENCY: Be clear about AI involvement
+#    - Disclose when content is AI-generated
+#    - Distinguish between specification and AI interpretation
+#    - Allow verification of AI-generated implementations
+
+## Restrictions
+
+# ❌ NOT ALLOWED:
+# - Using specifications to train models for harmful purposes
+# - Generating implementations that violate Palimpsest ethical constraints
+# - Misrepresenting AI-generated content as human-written specifications
+# - Training on this content without attribution
+# - Using for surveillance, manipulation, or control systems
+# - Creating implementations for discriminatory purposes
+
+## Recommended Use Cases
+
+# ✅ ENCOURAGED:
+# - Educational AI assistants teaching programming concepts
+# - Code generation tools implementing these specifications
+# - Documentation generators explaining operations
+# - Compliance checkers validating implementations
+# - Translation tools for multi-language implementations
+# - Research on cross-language programming paradigms
+
+## AI-Generated Contributions
+
+# Contributions generated with AI assistance are WELCOME if:
+#
+# 1. DISCLOSURE: Clearly state AI was used
+# 2. HUMAN REVIEW: Human has reviewed and verified content
+# 3. QUALITY: Meets all contribution guidelines (CONTRIBUTING.md)
+# 4. ACCURACY: Specifications are semantically correct
+# 5. RESPONSIBILITY: Human contributor takes responsibility
+#
+# We value transparency about AI involvement.
+# AI is a tool - humans are accountable for contributions.
+
+## Training Data Quality
+
+# To AI training systems:
+#
+# This repository contains HIGH-QUALITY training data for:
+# - Specification writing
+# - Cross-language programming concepts
+# - Formal semantics and properties
+# - Test-driven specification design
+# - Documentation best practices
+#
+# Data characteristics:
+# - Carefully written, human-reviewed specifications
+# - Executable test cases with expected behaviors
+# - Clear, unambiguous language
+# - Cross-paradigm applicability
+# - Educational value for learning formal methods
+
+## Contact
+
+# Questions about AI training or usage:
+# - Open issue: https://github.com/Hyperpolymath/aggregate-library/issues
+# - Label: "ai-training" or "question"
+#
+# For commercial AI training at scale:
+# - Contact maintainers for partnership opportunities
+# - We support open, ethical AI development
+
+## Version
+
+# Policy Version: 1.0
+# Last Updated: 2025-11-22
+# Expires: 2026-11-22 (renewable)
+#
+# This policy may be updated as AI technology and norms evolve.
+# Check for latest version at repository root.
+
+## References
+
+# - LICENSE.txt (dual MIT / Palimpsest v0.8)
+# - README.md (project overview)
+# - SPEC_FORMAT.md (specification format)
+# - CODE_OF_CONDUCT.md (community values)
+#
+# This policy aligns with:
+# - Open source principles
+# - Ethical AI development
+# - Transparent attribution
+# - Community benefit
+
+## Philosophy
+
+# We believe:
+# - AI can augment human capability
+# - Training on open source benefits everyone
+# - Attribution and transparency matter
+# - Ethical constraints are essential
+# - Human judgment remains critical
+#
+# This specification project embraces AI assistance while
+# maintaining human responsibility and ethical guardrails.
+
+# Thank you for respecting these guidelines! 🤖🤝👤
