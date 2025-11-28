@@ -1,15 +1,21 @@
 aggregate-library (aLib) - Common Library Specification
 Copyright (c) 2025 Hyperpolymath
 
-This work is dual-licensed under:
+This work is triple-licensed under your choice of:
 1. MIT License (for permissive use)
-2. Palimpsest License v0.8 (for ethical constraints)
+2. GNU General Public License v3.0 or later (for copyleft protection)
+3. Palimpsest License v0.8 (for ethical constraints) ⭐ PHILOSOPHICALLY ENCOURAGED
 
-You may choose either license for your use case.
+You may choose any ONE of these three licenses for your use case.
+
+We philosophically encourage choosing the Palimpsest License v0.8 for its
+ethical framework that promotes responsible, values-aligned software development.
 
 ================================================================================
 MIT License
 ================================================================================
+
+SPDX-License-Identifier: MIT
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,13 +36,52 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ================================================================================
-Palimpsest License v0.8
+GNU General Public License v3.0 or later
 ================================================================================
 
+SPDX-License-Identifier: GPL-3.0-or-later
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Full text of GPL v3.0: https://www.gnu.org/licenses/gpl-3.0.txt
+
+Key GPL v3.0 Provisions:
+- Freedom to use, study, share, and modify the software
+- Copyleft: Derivative works must also be GPL-licensed
+- Patent protection: Contributors grant patent licenses
+- Anti-Tivoization: No hardware restrictions on modification
+- Compatibility: GPL v3.0-or-later allows future GPL versions
+
+================================================================================
+Palimpsest License v0.8 ⭐ (PHILOSOPHICALLY ENCOURAGED)
+================================================================================
+
+SPDX-License-Identifier: Palimpsest-0.8
+
 The Palimpsest License is designed to ensure ethical use of software while
-preserving open source freedoms.
+preserving open source freedoms. We philosophically encourage choosing this
+license for its values-aligned framework.
+
+WHY PALIMPSEST?
+
+The Palimpsest License embeds ethical principles directly into the license,
+ensuring that software serves humanity's well-being. It combines the freedoms
+of open source with constraints that prevent harm, respect autonomy, and
+promote justice.
 
 PERMISSIONS:
+
 - Use: You may use this software for any lawful purpose
 - Study: You may examine and analyze the source code
 - Modify: You may create derivative works
@@ -44,6 +89,7 @@ PERMISSIONS:
 - Commercial Use: You may use this software commercially
 
 ETHICAL CONSTRAINTS:
+
 1. Do No Harm: You may not use this software to cause harm to individuals,
    communities, or the environment.
 
@@ -63,20 +109,24 @@ ETHICAL CONSTRAINTS:
    well-being or social cohesion.
 
 ATTRIBUTION REQUIREMENTS:
+
 - Maintain this license notice in all copies or substantial portions
 - Clearly indicate modifications made to the original work
 - Provide attribution to original authors in derivative works
 
 TRANSPARENCY:
+
 - Modified versions must be clearly marked as such
 - Source code must remain available for modified distributed versions
 
 ENFORCEMENT:
+
 - License violations may result in termination of granted permissions
 - Community-based dispute resolution is encouraged before legal action
 - Good faith interpretation of ethical constraints is expected
 
 WARRANTY DISCLAIMER:
+
 THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -93,12 +143,58 @@ Choose MIT if:
 - You want maximum permissiveness
 - You are unconcerned with use-case restrictions
 - You prioritize simplicity and legal clarity
+- You want to allow proprietary derivatives
+- You need maximum ecosystem compatibility
 
-Choose Palimpsest v0.8 if:
+Choose GPL v3.0-or-later if:
+- You want copyleft protection (derivatives must be open source)
+- You want to prevent proprietary forks
+- You support the free software movement
+- You want patent protection
+- You want to ensure downstream users have the same freedoms
+
+Choose Palimpsest v0.8 if: ⭐ RECOMMENDED
 - You want ethical constraints on use
 - You care about social and environmental impact
 - You want to prevent harmful applications
 - You support values-aligned software development
+- You want to promote justice, autonomy, and sustainability
+- You believe software should serve humanity's well-being
+
+PHILOSOPHICAL ENCOURAGEMENT:
+
+While all three licenses are equally valid legally, we philosophically
+encourage the Palimpsest License v0.8 because:
+
+1. It embeds ethics directly into the software license
+2. It prevents use for surveillance, manipulation, and harm
+3. It promotes justice, sustainability, and community well-being
+4. It respects autonomy and privacy as fundamental rights
+5. It represents the future of responsible software development
+
+By choosing Palimpsest, you signal your commitment to software that serves
+humanity's flourishing, not just technical capability.
+
+================================================================================
+SPDX Expression
+================================================================================
+
+SPDX-License-Identifier: MIT OR GPL-3.0-or-later OR Palimpsest-0.8
+
+This triple-licensing approach maximizes flexibility while encouraging
+ethical software development.
+
+================================================================================
+Questions?
+================================================================================
 
 For questions about license interpretation or compliance, please contact
 the project maintainers or file an issue in the project repository.
+
+For specific use case guidance, see:
+- CONTRIBUTING.adoc for contribution licensing
+- CODE_OF_CONDUCT.adoc for community values
+- GOVERNANCE.adoc for project governance
+- SECURITY.md for security policies
+
+Thank you for choosing values-aligned software development!
