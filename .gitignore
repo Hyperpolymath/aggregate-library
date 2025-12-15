@@ -1,148 +1,79 @@
-# SPDX-License-Identifier: MIT OR Palimpsest-0.8
-# SPDX-FileCopyrightText: 2025 Hyperpolymath
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# RSR-compliant .gitignore
 
-# aggregate-library (aLib) - .gitignore
-# Specifies intentionally untracked files that Git should ignore
-
-## Editor and IDE files
-*~
+# OS & Editor
+.DS_Store
+Thumbs.db
 *.swp
 *.swo
-.*.sw?
-*#
-.#*
-.DS_Store
-Thumbs.db
-
-# Vim
-[._]*.s[a-v][a-z]
-[._]*.sw[a-p]
-[._]s[a-rt-v][a-z]
-[._]ss[a-gi-z]
-[._]sw[a-p]
-Session.vim
-.netrwhist
-
-# Emacs
 *~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# VS Code
-.vscode/
-*.code-workspace
-
-# JetBrains IDEs
 .idea/
-*.iml
-*.ipr
-*.iws
+.vscode/
 
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-## Build artifacts and generated files
-/dist/
-/build/
+# Build
 /target/
-*.o
-*.a
-*.so
-*.dylib
-*.dll
-*.exe
+/_build/
+/build/
+/dist/
+/out/
 
-## Package manager directories
+# Dependencies
 /node_modules/
-/.pnpm-store/
 /vendor/
-/.bundle/
+/deps/
+/.elixir_ls/
 
-## Environment and secrets
-.env
-.env.local
-.env.*.local
-secrets.yml
-credentials.json
-*.key
-*.pem
-*.p12
+# Rust
+# Cargo.lock  # Keep for binaries
 
-## Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+# Elixir
+/cover/
+/doc/
+*.ez
+erl_crash.dump
 
-## Testing
-/coverage/
-/.nyc_output/
-/test-results/
-/.pytest_cache/
-/__pycache__/
+# Julia
+*.jl.cov
+*.jl.mem
+/Manifest.toml
+
+# ReScript
+/lib/bs/
+/.bsb.lock
+
+# Python (SaltStack only)
+__pycache__/
 *.py[cod]
+.venv/
 
-## Temporary files
+# Ada/SPARK
+*.ali
+/obj/
+/bin/
+
+# Haskell
+/.stack-work/
+/dist-newstyle/
+
+# Chapel
+*.chpl.tmp.*
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Test/Coverage
+/coverage/
+htmlcov/
+
+# Logs
+*.log
+/logs/
+
+# Temp
+/tmp/
 *.tmp
-*.temp
 *.bak
-*.backup
-*.cache
-
-## OS-specific
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Desktop.ini
-
-## Lock files (optional - some projects track these)
-# Uncomment if you don't want to track lock files:
-# package-lock.json
-# yarn.lock
-# Cargo.lock
-# mix.lock
-# flake.lock
-
-## Documentation build output
-/docs/_build/
-/docs/.doctrees/
-/site/
-
-## Nix
-result
-result-*
-/.direnv/
-
-## Justfile artifacts
-.just-build/
-
-## Git hooks (if generated)
-# We track git hooks, so this is commented:
-# .git/hooks/*
-
-## Large files that shouldn't be in repo
-*.zip
-*.tar.gz
-*.tar.bz2
-*.7z
-*.rar
-
-## Database files
-*.db
-*.sqlite
-*.sqlite3
-
-## Misc
-.sass-cache/
-.parcel-cache/
