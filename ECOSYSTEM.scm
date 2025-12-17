@@ -10,20 +10,35 @@
   (type "library")
   (purpose "**A Common Library specification shared across radically different programming languages**")
 
+  (satellite-of
+    (parent "nextgen-languages")
+    (parent-url "https://github.com/hyperpolymath/nextgen-languages")
+    (role "Core specification defining the 20 common operations across all language implementations"))
+
   (position-in-ecosystem
-    "Part of the hyperpolymath ecosystem of tools, libraries, and specifications.
+    "Satellite of nextgen-languages meta-repository.
+     Part of the hyperpolymath ecosystem of tools, libraries, and specifications.
      Follows RSR (Rhodium Standard Repositories) guidelines for consistency,
      security, and maintainability. Integrated with multi-platform CI/CD
      (GitHub, GitLab, Bitbucket) and OpenSSF Scorecard compliance.")
 
   (related-projects
     (project
-(name "hyperpolymath-ecosystem")
-(url "https://github.com/hyperpolymath")
-(relationship "ecosystem")
-(description "Part of the hyperpolymath project ecosystem")
-(differentiation
-  "Individual project within a larger cohesive ecosystem"))
+      (name "nextgen-languages")
+      (url "https://github.com/hyperpolymath/nextgen-languages")
+      (relationship "parent")
+      (description "Meta-repository coordinating nextgen language ecosystem")
+      (differentiation
+        "nextgen-languages = Parent/coordinator for all language projects
+         aggregate-library = Satellite providing common specification"))
+
+    (project
+      (name "hyperpolymath-ecosystem")
+      (url "https://github.com/hyperpolymath")
+      (relationship "ecosystem")
+      (description "Part of the hyperpolymath project ecosystem")
+      (differentiation
+        "Individual project within a larger cohesive ecosystem"))
 
     (project
       (name "rhodium-standard-repositories")
