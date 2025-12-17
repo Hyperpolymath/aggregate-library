@@ -443,7 +443,13 @@ See link:ROADMAP.md[] for detailed roadmap.
 == Related Projects
 
 * *iSOS*: The broader framework (documentation forthcoming)
-* Individual language repositories (links TBD)
+
+=== Language Implementations
+
+* link:https://github.com/hyperpolymath/affinescript[*AffineScript*] - Programming language with affine type semantics
+* link:https://github.com/hyperpolymath/ephapax[*Ephapax*] - Once-only evaluation language with linear type semantics
+* link:https://github.com/hyperpolymath/betlang[*BetLang*] - Language for probabilistic programming and reasoning under uncertainty
+* link:https://github.com/hyperpolymath/anvomidav[*Anvomidav*] - Reversible computing language
 
 == Acknowledgments
 

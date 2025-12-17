@@ -2,6 +2,21 @@
 
 ## Mapping Hypothetical to Real Languages
 
+### Additional Language Implementations (4)
+
+Beyond the original 7 hypothetical languages, the aggregate-library ecosystem includes these language implementation projects:
+
+8. **AffineScript** - Programming language with affine type semantics (resource safety)
+9. **Ephapax** - Once-only evaluation language with linear type semantics (single-use values)
+10. **BetLang** - Language for probabilistic programming and reasoning under uncertainty
+11. **Anvomidav** - Reversible computing language (every operation can be undone)
+
+These four languages extend the Common Library analysis with:
+- **AffineScript**: Explores affine types (use-at-most-once semantics) similar to Rust's ownership
+- **Ephapax**: Explores linear types (use-exactly-once semantics) for resource management
+- **BetLang**: Explores probabilistic primitives for Bayesian reasoning
+- **Anvomidav**: Explores reversible computation for quantum-compatible programming
+
 ### Original 7 Hypothetical Languages
 
 1. **WokeLang** (consent-driven, emotional) → **Elm** (friendly errors, no runtime exceptions, developer experience focus)

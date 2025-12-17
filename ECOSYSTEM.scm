@@ -50,7 +50,43 @@
       (description "Stateful Context Tracking Engine for AI Conversation Continuity")
       (differentiation
         "STATE.scm = Session/conversation persistence format
-         ECOSYSTEM.scm = Project relationship format")))
+         ECOSYSTEM.scm = Project relationship format"))
+
+    (project
+      (name "affinescript")
+      (url "https://github.com/hyperpolymath/affinescript")
+      (relationship "language-implementation")
+      (description "Programming language with affine type semantics")
+      (differentiation
+        "AffineScript = Language with affine types for resource safety
+         aggregate-library = Common specification across languages"))
+
+    (project
+      (name "ephapax")
+      (url "https://github.com/hyperpolymath/ephapax")
+      (relationship "language-implementation")
+      (description "Once-only evaluation language with linear type semantics")
+      (differentiation
+        "Ephapax = Language with linear types for single-use values
+         aggregate-library = Common specification across languages"))
+
+    (project
+      (name "betlang")
+      (url "https://github.com/hyperpolymath/betlang")
+      (relationship "language-implementation")
+      (description "Language for probabilistic programming and reasoning under uncertainty")
+      (differentiation
+        "BetLang = Language for probabilistic computation
+         aggregate-library = Common specification across languages"))
+
+    (project
+      (name "anvomidav")
+      (url "https://github.com/hyperpolymath/anvomidav")
+      (relationship "language-implementation")
+      (description "Reversible computing language")
+      (differentiation
+        "Anvomidav = Language for reversible computation
+         aggregate-library = Common specification across languages")))
 
   (what-this-is
     "**A Common Library specification shared across radically different programming languages**
