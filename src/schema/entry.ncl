@@ -110,6 +110,64 @@ let Semantics = {
     | Array String,
 } in
 
+# Provenance tracking for data lineage and attribution
+let Contributor = {
+  name
+    | doc "Contributor name or identifier"
+    | String,
+
+  role
+    | doc "Role in creating/maintaining the entry (author, reviewer, editor)"
+    | optional
+    | String,
+
+  contact
+    | doc "Contact URI (email, GitHub profile, etc.)"
+    | optional
+    | String,
+} in
+
+let Provenance = {
+  source_file
+    | doc "Relative path to the source specification file"
+    | String,
+
+  repository
+    | doc "Source repository URL"
+    | String,
+
+  license
+    | doc "SPDX license identifier"
+    | String,
+
+  contributors
+    | doc "List of contributors to this entry"
+    | Array Contributor,
+
+  created_at
+    | doc "ISO 8601 date when the entry was created"
+    | String,
+
+  modified_at
+    | doc "ISO 8601 date when the entry was last modified"
+    | String,
+
+  commit_hash
+    | doc "Git commit hash of the source (optional)"
+    | optional
+    | String,
+
+  upstream
+    | doc "Upstream source if derived from another project (optional)"
+    | optional
+    | String,
+
+  derivation
+    | doc "How this entry was derived (manual, generated, extracted)"
+    | default = "manual"
+    | String,
+} in
+
 # Main Entry schema - the contract for each operation specification
 let Entry = {
   name
@@ -136,6 +194,10 @@ let Entry = {
     | doc "Executable test cases demonstrating behavior"
     | Array TestCase,
 
+  provenance
+    | doc "Data lineage and attribution information"
+    | Provenance,
+
   # Metadata
   version
     | doc "Schema version for forward compatibility"
@@ -153,9 +215,11 @@ let Entry = {
   Property,
   TestCase,
   Semantics,
+  Contributor,
+  Provenance,
 
   # Schema metadata
-  schema_version = "1.0.0",
+  schema_version = "1.1.0",
   schema_name = "aLib Entry Schema",
 
   # Validation helper - validates an entry conforms to the schema
