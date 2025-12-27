@@ -1,12 +1,23 @@
 {
   "$schema": "./schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "generated_at": "2025-12-27",
   "metadata": {
     "name": "aLib Common Library Aggregate",
     "description": "Aggregated dataset of all operation specifications for cross-language programming",
     "total_operations": 20,
     "categories": ["arithmetic", "comparison", "logical", "string", "collection", "conditional"]
+  },
+  "provenance": {
+    "repository": "https://github.com/hyperpolymath/aggregate-library",
+    "license": "MIT OR Palimpsest-0.8",
+    "contributors": [
+      { "name": "Hyperpolymath", "role": "maintainer", "contact": "https://github.com/hyperpolymath" }
+    ],
+    "created_at": "2025-12-27",
+    "modified_at": "2025-12-27",
+    "derivation": "extracted",
+    "source_description": "Aggregated from individual spec files in specs/ directory"
   },
   "operations": [
     {
@@ -44,6 +55,15 @@
         { "input": [1.5, 2.5], "output": 4.0, "description": "Addition of decimal numbers" },
         { "input": [-10, -20], "output": -30, "description": "Addition of two negative numbers" }
       ],
+      "provenance": {
+        "source_file": "specs/arithmetic/add.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -82,6 +102,15 @@
         { "input": [10.5, 2.5], "output": 8.0, "description": "Subtraction of decimal numbers" },
         { "input": [-10, -20], "output": 10, "description": "Subtracting negative from negative" }
       ],
+      "provenance": {
+        "source_file": "specs/arithmetic/subtract.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -122,6 +151,15 @@
         { "input": [2.5, 4], "output": 10.0, "description": "Multiplication with decimal number" },
         { "input": [-3, -4], "output": 12, "description": "Multiplication of two negative numbers" }
       ],
+      "provenance": {
+        "source_file": "specs/arithmetic/multiply.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -162,6 +200,15 @@
         { "input": [10, -2], "output": -5, "description": "Division with negative divisor" },
         { "input": [-12, -3], "output": 4, "description": "Division of two negative numbers" }
       ],
+      "provenance": {
+        "source_file": "specs/arithmetic/divide.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -199,6 +246,15 @@
         { "input": [0, 5], "output": 0, "description": "Zero modulo non-zero" },
         { "input": [100, 7], "output": 2, "description": "Modulo with larger numbers" }
       ],
+      "provenance": {
+        "source_file": "specs/arithmetic/modulo.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -236,6 +292,15 @@
         { "input": [-5, 0], "output": true, "description": "Negative is less than zero" },
         { "input": [2.5, 3.5], "output": true, "description": "Decimal comparison" }
       ],
+      "provenance": {
+        "source_file": "specs/comparison/less_than.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -273,6 +338,15 @@
         { "input": [0, -5], "output": true, "description": "Zero is greater than negative" },
         { "input": [3.5, 2.5], "output": true, "description": "Decimal comparison" }
       ],
+      "provenance": {
+        "source_file": "specs/comparison/greater_than.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -313,6 +387,15 @@
         { "input": [2.5, 2.5], "output": true, "description": "Equal decimal numbers" },
         { "input": [1.0, 1], "output": true, "description": "Decimal and integer with same value" }
       ],
+      "provenance": {
+        "source_file": "specs/comparison/equal.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -348,6 +431,15 @@
         { "input": [-5, 5], "output": true, "description": "Negative and positive are not equal" },
         { "input": [0, 0], "output": false, "description": "Zero equals zero" }
       ],
+      "provenance": {
+        "source_file": "specs/comparison/not_equal.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -383,6 +475,15 @@
         { "input": [5, 3], "output": false, "description": "5 is not less than or equal to 3" },
         { "input": [-5, 0], "output": true, "description": "Negative is less than or equal to zero" }
       ],
+      "provenance": {
+        "source_file": "specs/comparison/less_equal.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -418,6 +519,15 @@
         { "input": [3, 5], "output": false, "description": "3 is not greater than or equal to 5" },
         { "input": [0, -5], "output": true, "description": "Zero is greater than or equal to negative" }
       ],
+      "provenance": {
+        "source_file": "specs/comparison/greater_equal.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -456,6 +566,15 @@
         { "input": [false, true], "output": false, "description": "First is false, second is true" },
         { "input": [false, false], "output": false, "description": "Both values are false" }
       ],
+      "provenance": {
+        "source_file": "specs/logical/and.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -494,6 +613,15 @@
         { "input": [false, true], "output": true, "description": "First is false, second is true" },
         { "input": [false, false], "output": false, "description": "Both values are false" }
       ],
+      "provenance": {
+        "source_file": "specs/logical/or.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -522,6 +650,15 @@
         { "input": [true], "output": false, "description": "Negation of true is false" },
         { "input": [false], "output": true, "description": "Negation of false is true" }
       ],
+      "provenance": {
+        "source_file": "specs/logical/not.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -560,6 +697,15 @@
         { "input": ["", ""], "output": "", "description": "Concatenation of two empty strings" },
         { "input": ["123", "456"], "output": "123456", "description": "Concatenation of numeric strings" }
       ],
+      "provenance": {
+        "source_file": "specs/string/concat.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -594,6 +740,15 @@
         { "input": [" "], "output": 1, "description": "Length of single space" },
         { "input": ["hello world"], "output": 11, "description": "Length with space" }
       ],
+      "provenance": {
+        "source_file": "specs/string/length.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -631,6 +786,15 @@
         { "input": ["hello", 0, 5], "output": "hello", "description": "Full string" },
         { "input": ["hello", 2, 2], "output": "", "description": "Empty range" }
       ],
+      "provenance": {
+        "source_file": "specs/string/substring.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -670,6 +834,15 @@
         { "input": { "collection": [5], "fn": "x => x" }, "output": [5], "description": "Identity function returns same element" },
         { "input": { "collection": ["a", "b", "c"], "fn": "s => concat(s, s)" }, "output": ["aa", "bb", "cc"], "description": "Map over string collection" }
       ],
+      "provenance": {
+        "source_file": "specs/collection/map.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -710,6 +883,15 @@
         { "input": { "collection": [1, 2, 3], "predicate": "x => false" }, "output": [], "description": "Filter with always-false predicate returns empty collection" },
         { "input": { "collection": [], "predicate": "x => true" }, "output": [], "description": "Filter empty collection returns empty collection" }
       ],
+      "provenance": {
+        "source_file": "specs/collection/filter.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -747,6 +929,15 @@
         { "input": { "collection": [], "initial": 0, "fn": "acc, x => add(acc, x)" }, "output": 0, "description": "Fold over empty collection returns initial value" },
         { "input": { "collection": ["a", "b", "c"], "initial": "", "fn": "acc, x => concat(acc, x)" }, "output": "abc", "description": "Concatenate strings" }
       ],
+      "provenance": {
+        "source_file": "specs/collection/fold.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -781,6 +972,15 @@
         { "input": { "collection": [], "element": 1 }, "output": false, "description": "Empty collection contains nothing" },
         { "input": { "collection": ["a", "b", "c"], "element": "b" }, "output": true, "description": "String element exists" }
       ],
+      "provenance": {
+        "source_file": "specs/collection/contains.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     },
     {
@@ -822,6 +1022,15 @@
         { "input": { "condition": true, "then_value": "yes", "else_value": "no" }, "output": "yes", "description": "Works with string values" },
         { "input": { "condition": false, "then_value": "yes", "else_value": "no" }, "output": "no", "description": "Returns else branch for false condition" }
       ],
+      "provenance": {
+        "source_file": "specs/conditional/if_then_else.md",
+        "repository": "https://github.com/hyperpolymath/aggregate-library",
+        "license": "MIT OR Palimpsest-0.8",
+        "contributors": [{ "name": "Hyperpolymath", "role": "author" }],
+        "created_at": "2025-11-22",
+        "modified_at": "2025-12-27",
+        "derivation": "extracted"
+      },
       "version": "1.0.0"
     }
   ]
