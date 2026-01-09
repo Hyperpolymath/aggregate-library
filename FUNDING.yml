@@ -41,9 +41,10 @@
 
 # Transparency Commitment:
 # When active, all financial information will be publicly available at:
-# - Budget: [TBD]
-# - Expenses: [TBD]
-# - Income: [TBD]
+# - Budget: docs/finance/BUDGET.md (planned)
+# - Expenses: docs/finance/EXPENSES.md (planned)
+# - Income: docs/finance/INCOME.md (planned)
+# - OpenCollective dashboard (when active): https://opencollective.com/aggregate-library
 
 # Thank you for your interest in supporting aggregate-library!
 # For now, the best way to support is through contributions (see CONTRIBUTING.adoc)

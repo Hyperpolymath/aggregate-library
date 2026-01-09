@@ -120,18 +120,18 @@ docs:
     @just docs-rsr
     @echo "✅ All documentation present!"
 
-# Check required documentation files
+# Check required documentation files (supports both .md and .adoc formats)
 docs-required:
     @echo "Checking required docs..."
-    @test -f README.md || (echo "❌ Missing README.md" && exit 1)
+    @test -f README.md -o -f README.adoc || (echo "❌ Missing README.md or README.adoc" && exit 1)
     @test -f LICENSE.txt || (echo "❌ Missing LICENSE.txt" && exit 1)
     @test -f CLAUDE.md || (echo "❌ Missing CLAUDE.md" && exit 1)
     @test -f SPEC_FORMAT.md || (echo "❌ Missing SPEC_FORMAT.md" && exit 1)
-    @test -f CONTRIBUTING.md || (echo "❌ Missing CONTRIBUTING.md" && exit 1)
+    @test -f CONTRIBUTING.md -o -f CONTRIBUTING.adoc || (echo "❌ Missing CONTRIBUTING.md or CONTRIBUTING.adoc" && exit 1)
     @test -f CODE_OF_CONDUCT.md || (echo "❌ Missing CODE_OF_CONDUCT.md" && exit 1)
     @test -f SECURITY.md || (echo "❌ Missing SECURITY.md" && exit 1)
     @test -f MAINTAINERS.md || (echo "❌ Missing MAINTAINERS.md" && exit 1)
-    @test -f CHANGELOG.md || (echo "❌ Missing CHANGELOG.md" && exit 1)
+    @test -f CHANGELOG.md -o -f CHANGELOG.adoc || (echo "❌ Missing CHANGELOG.md or CHANGELOG.adoc" && exit 1)
     @echo "  ✅ 9/9 required docs present"
 
 # Check .well-known directory files
@@ -160,16 +160,16 @@ rsr:
     @echo "✅ RSR compliance check complete!"
     @echo "See RSR_COMPLIANCE.md for detailed compliance report"
 
-# Check RSR documentation requirements
+# Check RSR documentation requirements (supports both .md and .adoc formats)
 rsr-documentation:
     @echo "📋 RSR Documentation:"
-    @test -f README.md && echo "  ✅ README.md" || echo "  ❌ README.md"
+    @(test -f README.md || test -f README.adoc) && echo "  ✅ README" || echo "  ❌ README"
     @test -f LICENSE.txt && echo "  ✅ LICENSE.txt" || echo "  ❌ LICENSE.txt"
     @test -f SECURITY.md && echo "  ✅ SECURITY.md" || echo "  ❌ SECURITY.md"
-    @test -f CONTRIBUTING.md && echo "  ✅ CONTRIBUTING.md" || echo "  ❌ CONTRIBUTING.md"
+    @(test -f CONTRIBUTING.md || test -f CONTRIBUTING.adoc) && echo "  ✅ CONTRIBUTING" || echo "  ❌ CONTRIBUTING"
     @test -f CODE_OF_CONDUCT.md && echo "  ✅ CODE_OF_CONDUCT.md" || echo "  ❌ CODE_OF_CONDUCT.md"
     @test -f MAINTAINERS.md && echo "  ✅ MAINTAINERS.md" || echo "  ❌ MAINTAINERS.md"
-    @test -f CHANGELOG.md && echo "  ✅ CHANGELOG.md" || echo "  ❌ CHANGELOG.md"
+    @(test -f CHANGELOG.md || test -f CHANGELOG.adoc) && echo "  ✅ CHANGELOG" || echo "  ❌ CHANGELOG"
 
 # Check RSR infrastructure requirements
 rsr-infrastructure:
@@ -177,13 +177,13 @@ rsr-infrastructure:
     @test -f .well-known/security.txt && echo "  ✅ .well-known/security.txt (RFC 9116)" || echo "  ❌ .well-known/security.txt"
     @test -f .well-known/ai.txt && echo "  ✅ .well-known/ai.txt" || echo "  ❌ .well-known/ai.txt"
     @test -f .well-known/humans.txt && echo "  ✅ .well-known/humans.txt" || echo "  ❌ .well-known/humans.txt"
-    @test -f justfile && echo "  ✅ justfile" || echo "  ❌ justfile"
+    @(test -f Justfile || test -f justfile) && echo "  ✅ Justfile" || echo "  ❌ Justfile"
 
 # Check RSR metadata
 rsr-metadata:
     @echo "📦 RSR Metadata:"
     @grep -q "Dual MIT / Palimpsest" LICENSE.txt && echo "  ✅ Dual license (MIT + Palimpsest)" || echo "  ⚠️  License check"
-    @grep -q "TPCF" CONTRIBUTING.md && echo "  ✅ TPCF Perimeter designation" || echo "  ⚠️  TPCF designation"
+    @(grep -q "TPCF" CONTRIBUTING.md 2>/dev/null || grep -q "TPCF" CONTRIBUTING.adoc 2>/dev/null) && echo "  ✅ TPCF Perimeter designation" || echo "  ⚠️  TPCF designation"
     @test -d specs && echo "  ✅ Specification directory" || echo "  ❌ specs/ directory"
 
 # Show RSR compliance level
@@ -239,15 +239,56 @@ show operation:
 clean:
     @echo "No generated files to clean"
 
-# Format check (future: add markdown linting)
+# Format check for markdown files
 format:
-    @echo "Format checking not yet implemented"
-    @echo "TODO: Add markdownlint or similar"
+    @echo "🔍 Checking markdown format..."
+    @errors=0; \
+    for file in *.md specs/**/*.md; do \
+        if [ -f "$file" ]; then \
+            if grep -q '	' "$file" 2>/dev/null; then \
+                echo "  ⚠️  $file: contains tabs (prefer spaces)"; \
+                errors=$$((errors + 1)); \
+            fi; \
+            if grep -qE '[[:space:]]$$' "$file" 2>/dev/null; then \
+                echo "  ⚠️  $file: trailing whitespace detected"; \
+                errors=$$((errors + 1)); \
+            fi; \
+            if [ -n "$$(tail -c 1 "$file" 2>/dev/null)" ]; then \
+                echo "  ⚠️  $file: missing final newline"; \
+                errors=$$((errors + 1)); \
+            fi; \
+        fi; \
+    done; \
+    if [ $$errors -eq 0 ]; then \
+        echo "✅ Format check passed!"; \
+    else \
+        echo "⚠️  Found $$errors format issue(s)"; \
+        echo "  Tip: Install 'markdownlint-cli' for comprehensive linting"; \
+    fi
 
-# Generate table of contents
-toc:
-    @echo "Table of Contents generation not yet implemented"
-    @echo "TODO: Add markdown-toc or similar"
+# Generate table of contents for markdown files
+toc file="README.md":
+    @echo "📑 Generating Table of Contents for {{file}}..."
+    @if [ ! -f "{{file}}" ]; then \
+        echo "❌ File not found: {{file}}"; \
+        exit 1; \
+    fi; \
+    echo ""; \
+    echo "## Table of Contents"; \
+    echo ""; \
+    grep -E "^#{1,6} " "{{file}}" | \
+        grep -v "^# " | \
+        grep -v "Table of Contents" | \
+        while read -r line; do \
+            level=$$(echo "$$line" | sed 's/[^#]//g' | wc -c); \
+            level=$$((level - 2)); \
+            title=$$(echo "$$line" | sed 's/^#* //'); \
+            anchor=$$(echo "$$title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 -]//g' | sed 's/ /-/g'); \
+            indent=$$(printf '%*s' $$((level * 2)) ''); \
+            echo "$${indent}- [$$title](#$$anchor)"; \
+        done; \
+    echo ""; \
+    echo "✅ Copy the above TOC into your markdown file"
 
 # Check for TODOs in documentation
 todos:
