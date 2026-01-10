@@ -411,7 +411,7 @@ We welcome contributions! This specification is part of ongoing research into cr
 
 This project is triple-licensed under your choice of:
 
-=== MIT License
+=== Palimpsest-MPL-1.0 License
 
 Permissive use for maximum compatibility and adoption.
 
