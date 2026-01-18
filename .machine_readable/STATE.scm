@@ -1,139 +1,69 @@
-;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; STATE.scm - Project state for aggregate-library
-;; Media-Type: application/vnd.state+scm
+;; SPDX-License-Identifier: PMPL-1.0
+;; STATE.scm - Current project state
 
-(state
-  (metadata
-    (version "0.1.0")
-    (schema-version "1.0")
-    (created "2025-01-03")
-    (updated "2025-01-12")
-    (project "aggregate-library")
-    (repo "github.com/hyperpolymath/aggregate-library"))
+(define project-state
+  `((metadata
+      ((version . "1.0.0")
+       (schema-version . "1")
+       (created . "2026-01-10T13:47:43+00:00")
+       (updated . "2026-01-18T00:00:00+00:00")  ;; update when you edit
+       (project . "aggregate-library")
+       (repo . "hyperpolymath/aggregate-library")))
 
-  (project-context
-    (name "aggregate-library (aLib)")
-    (tagline "Common Library specification shared across radically different programming languages")
-    (tech-stack (yaml markdown nix nickel just)))
+    (current-position
+      ((phase . "Methods Lab")
+       (overall-completion . 60)
+       (working-features
+         ("README framing: methods repo, not stdlib replacement"
+          "Basic repository scaffolding (v1.0 tag present)"))))
 
-  (current-position
-    (phase "specification-complete")
-    (overall-completion 80)
-    (components
-      ;; Core specifications
-      ((arithmetic-specs (status . complete) (completion . 100)
-        (operations . (add subtract multiply divide modulo)))
-       (comparison-specs (status . complete) (completion . 100)
-        (operations . (less_than greater_than equal not_equal less_equal greater_equal)))
-       (logical-specs (status . complete) (completion . 100)
-        (operations . (and or not)))
-       (string-specs (status . complete) (completion . 100)
-        (operations . (concat length substring)))
-       (collection-specs (status . complete) (completion . 100)
-        (operations . (map filter fold contains)))
-       (conditional-specs (status . complete) (completion . 100)
-        (operations . (if_then_else)))
-       ;; Infrastructure
-       (test-cases (status . complete) (completion . 100))
-       (documentation (status . complete) (completion . 100))
-       (rsr-compliance (status . complete) (completion . 100))
-       ;; Implementations pending
-       (language-implementations (status . pending) (completion . 0))))
-    (working-features
-      (specifications . "20 core operations fully specified")
-      (test-cases . "YAML test cases for all operations")
-      (compliance . "RSR Gold 100/100")
-      (infrastructure . "Nix, Nickel, Containerfile, justfile")))
+    (intent
+      ((primary
+         "Demonstrate the aLib method: define minimal overlap surfaces, document semantics, and validate via conformance tests under stress.")
+       (secondary
+         "Provide a stable reference point for ecosystem-specific implementations (e.g., ReScript/Melange), without becoming a required dependency.")))
 
-  (route-to-mvp
-    ((milestone . "v0.1.0 - Core Specification")
-     (status . complete)
-     (items
-      ((item . "Define 20 core operations") (done . #t))
-      ((item . "Write behavioral semantics") (done . #t))
-      ((item . "Create test cases") (done . #t))
-      ((item . "Documentation") (done . #t))
-      ((item . "RSR compliance") (done . #t))))
+    (ecosystem-notes
+      ((reference-implementations
+         ("proven: reference point for formally verified semantics and test intent"))
+       (implementation-repos
+         ("alib-for-rescript: practical ecosystem proving ground and adapters"))))
 
-    ((milestone . "v0.2.0 - Reference Implementations")
-     (status . in-progress)
-     (items
-      ((item . "Idris 2 implementation (via proven library)") (done . #t))
-      ((item . "Haskell implementation") (done . #f))
-      ((item . "Rust implementation") (done . #f))
-      ((item . "Compliance test runner") (done . #f))))
+    (route-to-mvp
+      ((milestones
+        ((v1.0
+           ((items . ("Initial setup"
+                      "Publish methods framing (README)"
+                      "Add initial spec + semantics placeholders"
+                      "Add initial conformance test harness placeholders"))
+            (status . "complete")))
 
-    ((milestone . "v1.0.0 - Full Language Coverage")
-     (status . pending)
-     (items
-      ((item . "WokeLang implementation") (done . #f))
-      ((item . "Duet/Ensemble implementation") (done . #f))
-      ((item . "Eclexia implementation") (done . #f))
-      ((item . "Oblíbený implementation") (done . #f))
-      ((item . "RT-Lang implementation") (done . #f))
-      ((item . "Phronesis implementation") (done . #f))
-      ((item . "Julia the Viper implementation") (done . #f)))))
+         (v1.1
+           ((items . ("Add first real spec slice (tiny overlap surface)"
+                      "Add conformance vectors for that slice"
+                      "Add at least one runner harness"))
+            (status . "planned")))
 
-  (blockers-and-issues
-    (critical)
-    (high
-      ((issue . "No reference implementation with formal verification")
-       (impact . "Cannot prove correctness of implementations")
-       (resolution . "Use proven library as Idris 2 reference - NOW AVAILABLE")))
-    (medium
-      ((issue . "Seven target languages not yet implemented")
-       (impact . "Cannot validate cross-language compatibility")
-       (resolution . "Implement each language incrementally")))
-    (low))
+         (v1.2
+           ((items . ("Document how implementation repos should consume method (without importing code)"
+                      "Add guidance on reversibility / rollback discipline"))
+            (status . "planned")))))))
 
-  (critical-next-actions
-    (immediate
-      ((action . "Integrate proven library as reference implementation")
-       (priority . 1)
-       (notes . "proven v0.3.0 provides SafeMath, SafeString with proofs")))
-    (this-week
-      ((action . "Create compliance test runner")
-       (priority . 2)))
-    (this-month
-      ((action . "Start Haskell reference implementation")
-       (priority . 3))))
+    (blockers-and-issues
+      ((critical . ())
+       (high . ())
+       (medium . ())
+       (low . ())))
 
-  (session-history
-    ((date . "2025-01-12")
-     (session . "proven-integration-reference")
-     (accomplishments
-      ("Updated ECOSYSTEM.scm with proven library relationship"
-       "Documented how proven implements aLib operations:"
-       "  - proven/SafeMath: add, subtract, multiply, divide, modulo with overflow proofs"
-       "  - proven/SafeString: concat, length, substring with UTF-8 safety"
-       "  - All operations have termination proofs (Idris 2 totality)"
-       "  - proven provides 12-language FFI bindings for cross-platform use"
-       "Integration path: use proven as gold standard for correctness")))))
+    (critical-next-actions
+      ((immediate
+         ("Replace placeholder SCM text with full ecosystem mapping and state (this file)"
+          "Add SPEC/ and tests/ skeleton aligned to README"))
+       (this-week
+         ("Define first overlap surface and write conformance vectors"
+          "Add runner harness for at least one environment"))
+       (this-month
+         ("Write 'Two meanings of Common' explainer with examples"
+          "Publish link-out guidance for ecosystem implementations"))))
 
-  ;; Reference: proven library mapping to aLib operations
-  (integration-guide
-    (proven-to-alib-mapping
-      ;; Arithmetic
-      ((alib-op . "add") (proven-module . "SafeMath") (proven-fn . "safeAdd") (verified . #t))
-      ((alib-op . "subtract") (proven-module . "SafeMath") (proven-fn . "safeSub") (verified . #t))
-      ((alib-op . "multiply") (proven-module . "SafeMath") (proven-fn . "safeMul") (verified . #t))
-      ((alib-op . "divide") (proven-module . "SafeMath") (proven-fn . "safeDiv") (verified . #t))
-      ((alib-op . "modulo") (proven-module . "SafeMath") (proven-fn . "safeMod") (verified . #t))
-      ;; String
-      ((alib-op . "concat") (proven-module . "SafeString") (proven-fn . "concat") (verified . #t))
-      ((alib-op . "length") (proven-module . "SafeString") (proven-fn . "length") (verified . #t))
-      ((alib-op . "substring") (proven-module . "SafeString") (proven-fn . "substr") (verified . #t)))
-    (proven-extras
-      ("SafeJson - JSON parsing without exceptions"
-       "SafeUrl - RFC 3986 URL parsing with injection prevention"
-       "SafeEmail - RFC 5321/5322 email validation"
-       "SafePath - Path traversal prevention"
-       "SafeRegex - ReDoS-safe regex with complexity analysis"
-       "SafeHtml - XSS prevention with escaping"
-       "SafeNetwork - IP/CIDR/port validation"
-       "SafePassword - Policy validation and strength analysis"
-       "SafeDateTime - Timezone-aware date/time handling"
-       "SafeCrypto - Hash and random primitives"))
-    (proven-bindings
-      ("Rust, Python, JavaScript, Deno, ReScript, Gleam"
-       "Julia, Swift, Kotlin, Go, Elixir, Zig FFI"))))
+    (session-history . ())))
