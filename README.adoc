@@ -25,6 +25,9 @@ It exists to demonstrate:
 
 This repo is intentionally allowed to be “weird” and “extreme” because its job is to break ideas early.
 
+NOTE: The “overlap” demonstrated here is intentionally chosen for stress-testing across *very different* designs.
+It is an illustrative demo of method under extreme diversity — not a claim that any ecosystem should adopt this overlap as its standard library.
+
 == What this repo is NOT
 To avoid confusion:
 
@@ -46,15 +49,16 @@ A practical shared layer for a specific ecosystem (example: ReScript + Melange +
 
 This repo covers only the first meaning.
 
-== Relationship to implementation repos
-Practical implementations live elsewhere, and may legitimately be larger, more ergonomic, and ecosystem-specific.
+== Reference implementations and optional consumers
+Some projects may serve as *reference points* for semantics, verification approaches, or ecosystem-specific implementations.
 
-Examples:
+These relationships are *optional* and *non-binding*:
 
-* `alib-for-rescript` (ReScript/Melange-oriented proving ground; optional runtime validation via Proven) — *implementation repo*
-* language-specific adapters, codemods, or conformance runners — *implementation support repos*
+* `proven` — a reference implementation that can inform semantics intent and verification style (not required).
+* `alib-for-rescript` — an ecosystem implementation proving ground (ReScript/Melange) that applies the aLib method (not required).
+* Implementation support repos (optional): conformance runners, codemods, interop pattern cookbooks.
 
-This repo is the “a priori” proof-of-concept: it exists to make sure the method survives stress.
+This repo should not become a “dependency magnet”; implementation repos should be able to adopt the method without importing code from here.
 
 == Design principles
 * Minimal surfaces, explicit semantics.
@@ -63,7 +67,7 @@ This repo is the “a priori” proof-of-concept: it exists to make sure the met
 * Ecosystem neutrality: no “blessed” implementation.
 
 == Contents
-(Describe your real layout here; placeholder example.)
+Adjust these headings to match the actual repo layout:
 
 * `SPEC/` — specifications (surface + semantics)
 * `tests/` — conformance vectors and runners
@@ -72,8 +76,8 @@ This repo is the “a priori” proof-of-concept: it exists to make sure the met
 
 == How to use this repo
 * Read the spec and the design notes.
-* Use the conformance vectors to validate an implementation in your ecosystem.
-* Borrow the method for building your own “proving ground” library.
+* Use conformance vectors to validate an implementation in your ecosystem.
+* Borrow the method for building your own proving-ground library.
 
 == Contributing
 Contributions should optimize for:
@@ -84,12 +88,9 @@ Contributions should optimize for:
 * and reduced ambiguity.
 
 If you are proposing new surface area, you must also propose:
+
 * semantics notes, and
 * tests that make regressions obvious.
-
-NOTE: The “overlap” demonstrated here is intentionally chosen for stress-testing across *very different* designs.
-It is an illustrative demo of method under extreme diversity — not a claim that any ecosystem should adopt this overlap as its standard library.
-
 
 == License
 PLMP-1.0.0-or-later
