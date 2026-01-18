@@ -88,4 +88,4 @@ If you are proposing new surface area, you must also propose:
 * tests that make regressions obvious.
 
 == License
-(TODO)
+PLMP-1.0.0-or-later
