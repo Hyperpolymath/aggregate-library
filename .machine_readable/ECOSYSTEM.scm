@@ -1,65 +1,45 @@
-;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; ECOSYSTEM.scm - Ecosystem position for aggregate-library
-;; Media-Type: application/vnd.ecosystem+scm
+;; SPDX-License-Identifier: PMPL-1.0
+;; ECOSYSTEM.scm - Project relationship mapping
+;;
+;; This file describes how this repo relates to other repos in the ecosystem.
+;; It is not a build artifact and is intentionally human-readable.
 
 (ecosystem
   (version "1.0")
   (name "aggregate-library")
-  (type "specification")
-  (purpose "Define minimal Common Library operations shared across radically different programming languages")
+  (type "project")
+
+  (purpose
+    "Methods and stress-test lab for aLib: demonstrate how to define a minimal overlap surface, specify semantics, and validate behavior via conformance tests — without proposing any ecosystem replace its standard library.")
 
   (position-in-ecosystem
-    (category "language-design")
-    (subcategory "cross-language-specification")
-    (unique-value
-      ("Defines universal operations across 7 diverse paradigms"
-       "Language-agnostic behavioral specifications"
-       "Executable test cases for compliance verification")))
+    (role "methods-lab")
+    (layer "design-and-validation")
+    (description
+      "This repo exists to stress-test the aLib method under extreme diversity. It is intentionally allowed to be weird and extreme so ideas break early, not downstream."))
 
+  ;; Relationship list is intentionally descriptive rather than prescriptive.
+  ;; This repo should not become a dependency magnet.
   (related-projects
-    ;; Reference implementations and verification
-    ((name . "proven")
-     (repo . "github.com/hyperpolymath/proven")
-     (relationship . "reference-implementation")
-     (description . "Idris 2 verified safety library - provides formally verified implementations of aLib operations")
-     (integration-notes
-       ("proven's SafeMath implements aLib arithmetic with overflow protection"
-        "proven's SafeString implements aLib string ops with UTF-8 safety"
-        "All proven operations have termination proofs (totality)"
-        "Use proven as gold standard for correctness verification")))
+    ((project
+       (name "proven")
+       (repo "https://github.com/hyperpolymath/proven")
+       (relationship "reference-implementation")
+       (why
+         "Proven demonstrates a formally verified approach to parts of the aLib method, serving as a reference point for semantics and tests. It is not required by this repo."))
 
-    ;; The seven target languages
-    ((name . "wokelang")
-     (relationship . "target-language")
-     (description . "Consent-driven, emotional computing"))
-    ((name . "duet-ensemble")
-     (relationship . "target-language")
-     (description . "AI-first, session types, effect systems"))
-    ((name . "eclexia")
-     (relationship . "target-language")
-     (description . "Sustainability-focused, energy budgets"))
-    ((name . "oblibeny")
-     (relationship . "target-language")
-     (description . "Security-first, provable termination"))
-    ((name . "rt-lang")
-     (relationship . "target-language")
-     (description . "Real-time systems, dependent types"))
-    ((name . "phronesis")
-     (relationship . "target-language")
-     (description . "Ethical reasoning, values-based"))
-    ((name . "julia-the-viper")
-     (relationship . "target-language")
-     (description . "Reversible computing, totality")))
+     (project
+       (name "alib-for-rescript")
+       (repo "https://github.com/hyperpolymath/alib-for-rescript")
+       (relationship "ecosystem-implementation")
+       (why
+         "A practical ReScript/Melange-oriented proving ground that applies the aLib method (clear boundaries + tests + reversibility) to real ecosystem needs, optionally integrating Proven ideas where they help."))))
 
   (what-this-is
-    ("Specification of 20 core operations across 6 categories"
-     "Interface signatures independent of language syntax"
-     "Behavioral semantics with mathematical properties"
-     "Executable test cases in YAML format"
-     "Foundation for cross-language interoperability"))
+    "A methods repository: a stress-test and demonstration of how to build a minimal overlap library safely using specification, semantics notes, and conformance tests.")
 
   (what-this-is-not
-    ("Not a programming language implementation"
-     "Not a runtime or execution engine"
-     "Does not include I/O, concurrency, or error handling"
-     "Does not specify memory management or type systems")))
+    ("Not a replacement standard library."
+     "Not a proposal that all ecosystems should share one stdlib."
+     "Not a dependency that implementation repos must import."
+     "Not a claim that this repo's overlap is the correct overlap for any specific ecosystem.")))
