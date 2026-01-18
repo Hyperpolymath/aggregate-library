@@ -6,19 +6,36 @@
       ((version . "1.0.0")
        (schema-version . "1")
        (created . "2026-01-10T13:47:43+00:00")
-       (updated . "2026-01-10T13:47:43+00:00")
+       (updated . "2026-01-18T00:00:00+00:00")
        (project . "aggregate-library")
-       (repo . "aggregate-library")))
+       (repo . "hyperpolymath/aggregate-library")))
 
     (current-position
-      ((phase . "Active Development")
-       (overall-completion . 50)
-       (working-features . ())))
+      ((phase . "Methods Lab")
+       (overall-completion . 60)
+       (working-features
+         ("README framing: methods repo, not stdlib replacement"
+          "Ecosystem mapping and state file baseline"))))
+
+    (intent
+      ((primary
+         "Demonstrate the aLib method: define minimal overlap surfaces, document semantics, and validate via conformance tests under stress.")
+       (secondary
+         "Provide a stable reference point for ecosystem-specific implementations (e.g., ReScript/Melange), without becoming a required dependency.")))
+
+    (ecosystem-notes
+      ((reference-implementations
+         ("proven: reference point for formally verified semantics and test intent"))
+       (implementation-repos
+         ("alib-for-rescript: practical ecosystem proving ground and adapters"))))
 
     (route-to-mvp
       ((milestones
-        ((v1.0 . ((items . ("Initial setup" "Core functionality"))
-                  (status . "in-progress")))))))
+        ((v1.1
+           ((items . ("Add SPEC/ skeleton (surface + semantics placeholders)"
+                      "Add tests/ skeleton (vectors + runner placeholders)"
+                      "Document method consumption without importing code"))
+            (status . "planned")))))))
 
     (blockers-and-issues
       ((critical . ())
@@ -27,8 +44,14 @@
        (low . ())))
 
     (critical-next-actions
-      ((immediate . ())
-       (this-week . ())
-       (this-month . ())))
+      ((immediate
+         ("Replace placeholder SCM text with full ecosystem mapping and state"
+          "Add SPEC/ and tests/ skeleton aligned to README"))
+       (this-week
+         ("Define first overlap surface and write conformance vectors"
+          "Add runner harness for at least one environment"))
+       (this-month
+         ("Write 'Two meanings of Common' explainer with concrete examples"
+          "Publish link-out guidance for ecosystem implementations"))))
 
     (session-history . ())))
