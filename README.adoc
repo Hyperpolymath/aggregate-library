@@ -87,5 +87,9 @@ If you are proposing new surface area, you must also propose:
 * semantics notes, and
 * tests that make regressions obvious.
 
+NOTE: The “overlap” demonstrated here is intentionally chosen for stress-testing across *very different* designs.
+It is an illustrative demo of method under extreme diversity — not a claim that any ecosystem should adopt this overlap as its standard library.
+
+
 == License
 PLMP-1.0.0-or-later
