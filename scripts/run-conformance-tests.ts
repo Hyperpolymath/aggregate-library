@@ -1,131 +1,218 @@
+#!/usr/bin/env -S deno run --allow-read
 // SPDX-License-Identifier: PMPL-1.0-or-later
-// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
+// Run conformance tests for aggregate-library implementations
+
+import {
+  extractTestCases,
+  loadAllTests,
+  type Implementation,
+  type ConformanceReport,
+  type TestResult,
+} from "../src/test-runner.ts";
+
 /**
- * Conformance Test Runner
- *
- * Runs test cases from spec files against the aLib implementation
- * to verify conformance.
- *
- * This validates that implementations match their specifications.
+ * Reference ReScript implementation adapter
+ * Maps spec operation names to ReScript implementation
  */
+function createReferenceImplementation(): Implementation {
+  // Import the compiled ReScript module (in production)
+  // For now, create JavaScript equivalents that match ReScript semantics
 
-import { walk } from "@std/fs";
-import { parse as parseYaml } from "@std/yaml";
-import { assertEquals } from "@std/assert";
+  return {
+    language: "ReScript (Reference)",
+    operations: new Map([
+      // Arithmetic
+      ["arithmetic/add", (a: number, b: number) => a + b],
+      ["arithmetic/subtract", (a: number, b: number) => a - b],
+      ["arithmetic/multiply", (a: number, b: number) => a * b],
+      ["arithmetic/divide", (a: number, b: number) => a / b],
+      ["arithmetic/modulo", (a: number, b: number) => a % b],
 
-interface TestCase {
-  input: unknown;
-  output: unknown;
-  description: string;
+      // Comparison
+      ["comparison/equal", (a: unknown, b: unknown) => a === b],
+      ["comparison/not_equal", (a: unknown, b: unknown) => a !== b],
+      ["comparison/less_than", (a: number, b: number) => a < b],
+      ["comparison/less_equal", (a: number, b: number) => a <= b],
+      ["comparison/greater_than", (a: number, b: number) => a > b],
+      ["comparison/greater_equal", (a: number, b: number) => a >= b],
+
+      // Logical
+      ["logical/and", (a: boolean, b: boolean) => a && b],
+      ["logical/or", (a: boolean, b: boolean) => a || b],
+      ["logical/not", (a: boolean) => !a],
+
+      // Collection
+      ["collection/map", (arr: unknown[], fn: (x: unknown) => unknown) => arr.map(fn)],
+      ["collection/filter", (arr: unknown[], pred: (x: unknown) => boolean) => arr.filter(pred)],
+      ["collection/fold", (arr: unknown[], init: unknown, fn: (acc: unknown, x: unknown) => unknown) =>
+        arr.reduce(fn, init)],
+      ["collection/contains", (arr: unknown[], elem: unknown) => arr.some(x => x === elem)],
+
+      // String
+      ["string/concat", (a: string, b: string) => a + b],
+      ["string/length", (s: string) => s.length],
+      ["string/substring", (s: string, start: number, end: number) => s.substring(start, end)],
+
+      // Conditional
+      ["conditional/if_then_else", (
+        cond: boolean,
+        thenFn: () => unknown,
+        elseFn: () => unknown
+      ) => cond ? thenFn() : elseFn()],
+    ]),
+  };
 }
 
-interface TestSuite {
-  operation: string;
-  category: string;
-  testCases: TestCase[];
-}
+/**
+ * Run conformance tests and generate report
+ */
+async function runConformanceTests(
+  implementation: Implementation,
+  tests: Map<string, unknown>
+): Promise<ConformanceReport> {
+  const results: TestResult[] = [];
+  let totalTests = 0;
+  let passed = 0;
+  let failed = 0;
+  let skipped = 0;
 
-async function loadTestSuites(): Promise<TestSuite[]> {
-  const suites: TestSuite[] = [];
+  for (const [key, spec] of tests) {
+    const implFunc = implementation.operations.get(key);
 
-  for await (const entry of walk("./specs", {
-    exts: [".md"],
-    includeFiles: true,
-    includeDirs: false,
-  })) {
-    const content = await Deno.readTextFile(entry.path);
-
-    // Extract operation name and category from path
-    // e.g., ./specs/arithmetic/add.md -> { category: "arithmetic", operation: "add" }
-    const pathParts = entry.path.split("/");
-    const category = pathParts[pathParts.length - 2];
-    const operation = pathParts[pathParts.length - 1].replace(".md", "");
-
-    // Extract YAML test cases
-    const yamlMatch = content.match(/```yaml\n([\s\S]+?)\n```/);
-    if (!yamlMatch) {
-      console.warn(`⚠️  No test cases found in ${entry.path}`);
+    if (!implFunc) {
+      // Skip if implementation doesn't provide this operation
+      for (let i = 0; i < (spec as { testCases: unknown[] }).testCases.length; i++) {
+        const testCase = (spec as { testCases: { description: string; output: unknown }[] }).testCases[i];
+        results.push({
+          operation: key.split("/")[1],
+          category: key.split("/")[0],
+          testCase: i + 1,
+          description: testCase.description,
+          expected: testCase.output,
+          actual: undefined,
+          passed: false,
+          error: "Operation not implemented",
+        });
+        skipped++;
+        totalTests++;
+      }
       continue;
     }
 
-    const testData = parseYaml(yamlMatch[1]) as {
-      test_cases: TestCase[];
-    };
-
-    suites.push({
-      operation,
-      category,
-      testCases: testData.test_cases,
-    });
-  }
-
-  return suites;
-}
-
-function runTestCase(suite: TestSuite, testCase: TestCase): boolean {
-  console.log(`    Testing: ${testCase.description}`);
-
-  try {
-    // Note: This is a placeholder for actual implementation testing
-    // In a real scenario, you would:
-    // 1. Import the ReScript compiled JS
-    // 2. Call the appropriate function with testCase.input
-    // 3. Compare result with testCase.output
-
-    // For now, we just validate the structure
-    if (testCase.input === undefined || testCase.output === undefined) {
-      throw new Error("Invalid test case structure");
-    }
-
-    console.log(`      ✅ PASS`);
-    return true;
-  } catch (error) {
-    console.log(
-      `      ❌ FAIL: ${(error as Error).message}`,
-    );
-    return false;
-  }
-}
-
-async function main() {
-  console.log("🧪 Running conformance tests...\n");
-
-  const suites = await loadTestSuites();
-  console.log(`Found ${suites.length} test suites\n`);
-
-  let totalTests = 0;
-  let passedTests = 0;
-  let failedTests = 0;
-
-  for (const suite of suites) {
-    console.log(`📦 ${suite.category}/${suite.operation}`);
-
-    for (const testCase of suite.testCases) {
+    // Run each test case
+    for (let i = 0; i < (spec as { testCases: unknown[] }).testCases.length; i++) {
+      const testCase = (spec as { testCases: { input: unknown[]; output: unknown; description: string }[] }).testCases[i];
       totalTests++;
-      const passed = runTestCase(suite, testCase);
-      if (passed) {
-        passedTests++;
-      } else {
-        failedTests++;
+
+      try {
+        const actual = implFunc(...testCase.input);
+        const testPassed = deepEqual(actual, testCase.output);
+
+        results.push({
+          operation: key.split("/")[1],
+          category: key.split("/")[0],
+          testCase: i + 1,
+          description: testCase.description,
+          expected: testCase.output,
+          actual,
+          passed: testPassed,
+        });
+
+        if (testPassed) {
+          passed++;
+        } else {
+          failed++;
+        }
+      } catch (error) {
+        results.push({
+          operation: key.split("/")[1],
+          category: key.split("/")[0],
+          testCase: i + 1,
+          description: testCase.description,
+          expected: testCase.output,
+          actual: undefined,
+          passed: false,
+          error: error.message,
+        });
+        failed++;
       }
     }
-
-    console.log();
   }
 
-  console.log(`📊 Results:`);
-  console.log(`  Total:  ${totalTests} tests`);
-  console.log(`  Passed: ${passedTests} tests`);
-  console.log(`  Failed: ${failedTests} tests`);
-
-  if (failedTests > 0) {
-    console.log(`\n❌ Some tests failed`);
-    Deno.exit(1);
-  } else {
-    console.log(`\n✨ All tests passed!`);
-  }
+  return {
+    language: implementation.language,
+    totalTests,
+    passed,
+    failed,
+    skipped,
+    results,
+  };
 }
 
+function deepEqual(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (typeof a !== typeof b) return false;
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    return a.every((val, idx) => deepEqual(val, b[idx]));
+  }
+  if (typeof a === "object" && a !== null && b !== null) {
+    const aKeys = Object.keys(a);
+    const bKeys = Object.keys(b);
+    if (aKeys.length !== bKeys.length) return false;
+    return aKeys.every(key => deepEqual((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key]));
+  }
+  // Handle floating point comparison with tolerance
+  if (typeof a === "number" && typeof b === "number") {
+    return Math.abs(a - b) < 1e-10;
+  }
+  return false;
+}
+
+function printReport(report: ConformanceReport) {
+  console.log("\n" + "=".repeat(80));
+  console.log(`Conformance Report: ${report.language}`);
+  console.log("=".repeat(80));
+  console.log(`Total Tests: ${report.totalTests}`);
+  console.log(`Passed: ${report.passed} (${(report.passed / report.totalTests * 100).toFixed(1)}%)`);
+  console.log(`Failed: ${report.failed}`);
+  console.log(`Skipped: ${report.skipped}`);
+  console.log("=".repeat(80));
+
+  const failedTests = report.results.filter(r => !r.passed);
+  if (failedTests.length > 0) {
+    console.log("\nFailed Tests:");
+    console.log("-".repeat(80));
+    for (const result of failedTests) {
+      console.log(`\n${result.category}/${result.operation} - Test #${result.testCase}`);
+      console.log(`  Description: ${result.description}`);
+      console.log(`  Expected: ${JSON.stringify(result.expected)}`);
+      console.log(`  Actual: ${JSON.stringify(result.actual)}`);
+      if (result.error) {
+        console.log(`  Error: ${result.error}`);
+      }
+    }
+  } else {
+    console.log("\n✓ All tests passed!");
+  }
+
+  console.log("\n" + "=".repeat(80));
+}
+
+// Main execution
 if (import.meta.main) {
-  main();
+  console.log("Loading test specifications...");
+  const tests = await loadAllTests();
+  console.log(`Loaded ${tests.size} operation specs with test cases`);
+
+  console.log("\nRunning conformance tests for Reference Implementation...");
+  const impl = createReferenceImplementation();
+  const report = await runConformanceTests(impl, tests);
+
+  printReport(report);
+
+  // Exit with error code if any tests failed
+  if (report.failed > 0) {
+    Deno.exit(1);
+  }
 }

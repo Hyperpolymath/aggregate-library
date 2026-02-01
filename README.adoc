@@ -66,13 +66,44 @@ This repo should not become a “dependency magnet”; implementation repos shou
 * Reversibility: changes must be easy to evaluate and to undo.
 * Ecosystem neutrality: no “blessed” implementation.
 
-== Contents
-Adjust these headings to match the actual repo layout:
+== Composition Guide
 
-* `SPEC/` — specifications (surface + semantics)
-* `tests/` — conformance vectors and runners
-* `notes/` — design rationale, reversibility, tradeoffs
-* `examples/` — stress-test cases and demonstrations
+This repository demonstrates the extraction of universal patterns from the intersection of multiple language stlibs (Phronesis, Rust, Haskell), choosing the best implementation for each pattern.
+
+See link:COMPOSITION-GUIDE.md[COMPOSITION-GUIDE.md] for the complete methodology:
+
+----
+aggregate-library = (common elements of phronesis stdlib ∩ Rust stdlib ∩ Haskell stdlib)
+                  ∪ (compiler utilities)
+----
+
+This creates a *leaner library* with *no duplication* - a single source of truth for universal patterns.
+
+=== stdlib-merger Tool
+
+An automated tool for extracting common patterns from multiple stlibs is available in `tools/stdlib-merger/`.
+
+[source,bash]
+----
+cd tools/stdlib-merger
+julia cli.jl merge \
+  --stdlib phronesis:/path/to/phronesis/stdlib \
+  --stdlib rust:/path/to/rust/std \
+  --stdlib haskell:/path/to/haskell/base \
+  --output ../../lib/aggregate_library
+----
+
+See link:tools/stdlib-merger/README.md[stdlib-merger README] and link:tools/stdlib-merger/ARCHITECTURE.md[ARCHITECTURE] for details.
+
+== Contents
+
+Current implementation demonstrates:
+
+* `lib/aggregate_library/` — Universal stdlib patterns (Result, Collections, FileIO, Stream, Time)
+* `lib/a_lib/` — Compiler utilities (Token, Position, Error, AST.Traversal, StringUtils, ColorOutput)
+* `specs/` — Specifications (arithmetic, comparison, logical, collection, string operations)
+* `scripts/` — Validation tools (Deno)
+* `COMPOSITION-GUIDE.md` — Detailed methodology and integration examples
 
 == How to use this repo
 * Read the spec and the design notes.

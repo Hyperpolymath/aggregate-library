@@ -33,4 +33,9 @@ test_cases:
   - input: [false]
     output: true
     description: "Negation of false is true"
+
+  - input: [true]
+    output: true
+    description: "Double negation returns original value: not(not(true)) = true"
+    note: "Demonstrates double negation property"
 ```
